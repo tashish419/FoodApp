@@ -13,9 +13,6 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState([]);
 
-  //whenever state variable update, react triggers a reconciliation cycle(re-renderd the component)
-  // console.log("Body Rendered");
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -37,12 +34,6 @@ const Body = () => {
     );
   };
 
-  // //Conditional Rendering
-  // if (listofRestaurant.length === 0) {
-  //   return <Shimmer />;
-  // }
-
-  //or we can use ternary operator for conditional rendering
   return listofRestaurant.length === 0 ? (
     <Shimmer />
   ) : (

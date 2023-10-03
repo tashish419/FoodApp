@@ -34,7 +34,6 @@ const RestaurantMenu = () => {
     restInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
 
-  // console.log(itemCards);
 
   return (
     <div className="restDetails-container">
