@@ -22,7 +22,6 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(json);
     // optional chaining
     setListofRestaurant(
       json?.data?.cards?.[3]?.card?.card?.gridElements?.infoWithStyle
@@ -56,8 +55,6 @@ const Body = () => {
               );
 
               setFilteredRestaurant(filteredList);
-              //search text
-              console.log(searchText);
             }}
           >
             Search
