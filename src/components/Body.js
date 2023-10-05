@@ -22,13 +22,15 @@ const Body = () => {
 
     const json = await data.json();
 
+    console.log(json);
+
     // optional chaining
     setListofRestaurant(
-      json?.data?.cards?.[3]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards?.[3]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   };
