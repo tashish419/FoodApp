@@ -1,3 +1,5 @@
+import UserClass from "./UserClass";
+
 const About = () => {
   return (
     <div className="about container">
@@ -7,6 +9,7 @@ const About = () => {
         like search, filter where u can find easily your favourite restraunts which offer
         some delicous cusines.
       </p>
+      <UserClass  name={"Ashish Tomar"} location={"Ghaziabad"}/>
     </div>
   );
 };

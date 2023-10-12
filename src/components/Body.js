@@ -3,37 +3,38 @@ import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import { RESTAURANT_LIST_API } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
-  //Local State variable - super powerfull variable
   const [listofRestaurant, setListofRestaurant] = useState([]);
-
-  //creating another listofRestaurant for filtered restro
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText, setSearchText] = useState([]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  },[])
 
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST_API);
-
     const json = await data.json();
 
-    console.log(json);
-
-    // optional chaining
     setListofRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you are offline!! Please check your Internet Connection;
+      </h1>
+    );
 
   return listofRestaurant.length === 0 ? (
     <Shimmer />
@@ -75,10 +76,16 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
+        <div className="online-status">
+          Online Status: {onlineStatus ? "✅": "🔴"}
+        </div>
       </div>
       <div className="rest-container">
         {filteredRestaurant.map((restros) => (
-          <Link key={restros.info.id} to={"/restaurants/"+ restros.info.id}> <RestaurantCard restData={restros} /> </Link>
+          <Link key={restros.info.id} to={"/restaurants/" + restros.info.id}>
+            {" "}
+            <RestaurantCard restData={restros} />{" "}
+          </Link>
         ))}
       </div>
     </div>

@@ -76,8 +76,9 @@
     display: flex;  
     padding: 20px 0px;
     margin-left: 55px;
-    gap: 300px;
+    gap: 310px;
 }
+
 
 .detail-box {
     display: flex;
