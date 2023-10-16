@@ -1,9 +1,10 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withBestsellerLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import { RESTAURANT_LIST_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { list } from "postcss";
 
 const Body = () => {
   const [listofRestaurant, setListofRestaurant] = useState([]);
@@ -11,13 +12,16 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState([]);
 
+  const RestaurantCardBestseller = withBestsellerLabel(RestaurantCard);
+
   useEffect(() => {
     fetchData();
-  },[])
+  }, []);
 
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST_API);
     const json = await data.json();
+
 
     setListofRestaurant(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -40,17 +44,18 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body-container">
-      <div className="searchBar-container">
-        <div className="search">
+      <div className="flex justify-between items-center">
+        <div className="m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(event) => {
               setSearchText(event.target.value);
             }}
           />
           <button
+            className=" focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-3 py-1 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 m-4"
             onClick={() => {
               //fliter the restaurant cards and update the UI
               const filteredList = listofRestaurant.filter((res) =>
@@ -63,9 +68,9 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="filter">
+        <div>
           <button
-            className="filter-btn"
+            className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-3 py-1 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
             onClick={() => {
               const filteredList = listofRestaurant.filter(
                 (res) => res.info.avgRating > 4
@@ -76,15 +81,18 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
-        <div className="online-status">
-          Online Status: {onlineStatus ? "✅": "🔴"}
+        <div className="m-4 p-4">
+          Online Status: {onlineStatus ? "✅" : "🔴"}
         </div>
       </div>
-      <div className="rest-container">
+      <div className="flex flex-wrap mx-20">
         {filteredRestaurant.map((restros) => (
           <Link key={restros.info.id} to={"/restaurants/" + restros.info.id}>
-            {" "}
-            <RestaurantCard restData={restros} />{" "}
+            {restros.info.avgRating > 4.2 ? (
+              <RestaurantCardBestseller restData={restros} />
+            ) : (
+              <RestaurantCard restData={restros} />
+            )}
           </Link>
         ))}
       </div>

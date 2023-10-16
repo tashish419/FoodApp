@@ -8,9 +8,10 @@ import Error from "./components/Error";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Footer from "./components/Footer";
 // import Grocery from "./components/Grocery";
 
-//chunking, code splitting , Dynamic Bundling, lazy loading, on demand loading(different names)
+//chunking, code splitting , Dynamic Bundling, lazy loading, on demand loading, dynamic import(different names)
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -19,6 +20,7 @@ const AppLayout = () => {
     <div className="app">
       <Header />
       <Outlet />
+      <Footer />
     </div>
   );
 };

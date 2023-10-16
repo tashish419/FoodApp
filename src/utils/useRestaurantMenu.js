@@ -13,7 +13,7 @@ const useRestaurantMenu = (restId) => {
         const data = await fetch(MENU_API + restId);
         const menu = await data.json();
 
-        setRestInfo(menu);
+        setRestInfo(menu.data);
     }
 
     return restInfo;
