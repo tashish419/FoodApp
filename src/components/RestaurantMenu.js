@@ -2,6 +2,7 @@ import Shimmer from "./shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { restId } = useParams();
@@ -9,6 +10,8 @@ const RestaurantMenu = () => {
   //   console.log(params);//useParams() return us an object of key/value pair of the dynamic params
 
   const restInfo = useRestaurantMenu(restId);
+   
+  const [showIndex, setShowIndex] = useState(null);
 
   if (restInfo === null) {
     return <Shimmer />;
@@ -41,10 +44,13 @@ const RestaurantMenu = () => {
         {locality},{city}
       </p>
       {/* categories accordians */}
-      {categories.map((category) => (
+      {categories.map((category, index) => (
+        //controlled component
         <RestaurantCategory
           key={category.card.card.title}
           data={category?.card?.card}
+          showItems={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}//now i have passed a function as a prop which will update the setShowIndex variable acc to index
         />
       ))}
     </div>

@@ -1,12 +1,16 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data }) => {
+const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
 //   console.log(data);
-  const [showItems, setShowIems] = useState(false)
+//   const [showItems, setShowIems] = useState(false) 
+/*in this case RestaurantCategory component managing its own state therefore whenever 
+ i click on accordian header,it expands and when i click on another accordian header ,that accordian body
+ expands but previously expanded accordian body does not collapse  */
+ /* it will be solved once i make the parent component(RestaurantMenu) control its state , not the children(RestaurantCategory) */
  
   const handleClick = () => {
-    setShowIems(!showItems);
+    setShowIndex();
   }
   return (
     <div>
