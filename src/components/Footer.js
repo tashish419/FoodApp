@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../utils/userContext";
 
 const Footer = () => {
+  const { loggedInUser } = useContext(UserContext);
+  console.log(loggedInUser);
+
   return (
     <>
       <div className="hidden md:flex min-h-[104px] bg-gray-200 mt-6 items-center justify-center ">
@@ -23,7 +28,7 @@ const Footer = () => {
         <div className="container grid grid-cols-1 text-center  md:grid-cols-4 gap-4 mx-auto">
           <div className="md:col-start-1 col-end-auto row-start-1 row-end-5">
             <h2 className="text-2xl font-bold">ProFood</h2>
-            <h4 className="text-gray-300 my-4">© 2023 made By Ashish</h4>
+            <h4 className="text-gray-300 my-4">© 2023 made By {loggedInUser}</h4>
           </div>
 
           <div className="md-col-start-2">
@@ -77,6 +82,15 @@ const Footer = () => {
                   ProFood Genie
                 </Link>
               </li>
+              {/* this list is just to show the example of "react-context"
+               <li className="my-4">
+                <Link
+                  to="#"
+                  className="text-gray-300 hover:text-white transition duration-300"
+                >
+                  {loggedInUser}
+                </Link>
+              </li> */}
             </ul>
           </div>
 
