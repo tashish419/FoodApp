@@ -1,10 +1,11 @@
 import RestaurantCard, { withBestsellerLabel } from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./shimmer";
 import { RESTAURANT_LIST_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { list } from "postcss";
+import UserContext from "../utils/userContext";
 
 const Body = () => {
   const [listofRestaurant, setListofRestaurant] = useState([]);
@@ -13,6 +14,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState([]);
 
   const RestaurantCardBestseller = withBestsellerLabel(RestaurantCard);
+
 
   useEffect(() => {
     fetchData();
@@ -40,22 +42,25 @@ const Body = () => {
       </h1>
     );
 
+  const { loggedInUser, setUserName } = useContext(UserContext);
+  console.log(setUserName);
+
   return listofRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body-container">
+    <div>
       <div className="flex justify-between items-center">
         <div className="m-4 p-4">
           <input
             type="text"
-            className="border border-solid border-black"
+            className="border border-solid border-black p-1"
             value={searchText}
             onChange={(event) => {
               setSearchText(event.target.value);
             }}
           />
           <button
-            className=" focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-3 py-1 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 m-4"
+            className=" focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-3 py-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 m-4"
             onClick={() => {
               //fliter the restaurant cards and update the UI
               const filteredList = listofRestaurant.filter((res) =>
@@ -70,7 +75,7 @@ const Body = () => {
         </div>
         <div>
           <button
-            className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-3 py-1 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+            className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-3 py-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
             onClick={() => {
               const filteredList = listofRestaurant.filter(
                 (res) => res.info.avgRating > 4
@@ -80,6 +85,15 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
+        <div className="m-4 p-4">
+          <label>User Name: </label>
+          <input
+            type="text"
+            className="border border-solid border-black p-1"
+            value={loggedInUser}
+            onChange={(event) => setUserName(event.target.value)}
+          />
         </div>
         <div className="m-4 p-4">
           Online Status: {onlineStatus ? "✅" : "🔴"}

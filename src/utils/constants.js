@@ -10,3 +10,4 @@ export const MENU_API =
 export const RESTAURANT_LIST_API =
   "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9801436&lng=77.5685724&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
+export const CART_IMG = "https://img.freepik.com/free-vector/sale-full-shopping-cart-red-pictogram_1284-8505.jpg?w=740&t=st=1697720444~exp=1697721044~hmac=3da817cc5a287f7377215e4809df2ed323696d8c4e1cbd8804f5b9b7f243ba93"

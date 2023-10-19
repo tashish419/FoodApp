@@ -1,9 +1,14 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btnNamereact, setBtnNamereact] = useState("Login");
+  
+  //subscribing(only the small portion of store i.e.,-> store.cart.items)to the store using a Selector hook
+  const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
 
   return (
     <div className="flex justify-between bg-gray-200 shadow-md h-25">
@@ -24,9 +29,10 @@ const Header = () => {
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="px-4">
-            <Link to="/cart">Cart</Link>
+          <li className="px-4 font-bold text-lg">
+            <Link to="/cart">Cart ({cartItems.length})</Link>
           </li>
+
           <li className="px-4">
             <button
               className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-3 py-1 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"

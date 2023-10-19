@@ -5,7 +5,7 @@ import UserContext from "../utils/userContext";
 
 const Footer = () => {
   const { loggedInUser } = useContext(UserContext);
-  console.log(loggedInUser);
+  // console.log(loggedInUser);
 
   return (
     <>
