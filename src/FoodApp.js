@@ -13,7 +13,8 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appstore";
 import Cart from "./components/Cart";
 import SearchRestaurants from "./components/Search";
-import Offers from "./components/Offers"
+import Offers from "./components/Offers";
+import Help from "./components/Help";
 // import Grocery from "./components/Grocery";
 
 //chunking, code splitting , Dynamic Bundling, lazy loading, on demand loading, dynamic import(different names)
@@ -77,16 +78,20 @@ const appRouter = createBrowserRouter([
         element: <Body />,
       },
       {
+        path: "/offers",
+        element: <Offers />,
+      },
+      {
+        path: "/helps",
+        element: <Help />
+      },
+      {
         path: "/about",
         element: <About />,
       },
       {
-        path: "/offers",
-        element: <Offers />
-      },
-      {
         path: "/search",
-        element: <SearchRestaurants />
+        element: <SearchRestaurants />,
       },
       {
         path: "/contact",

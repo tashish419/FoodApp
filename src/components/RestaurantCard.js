@@ -21,7 +21,7 @@ const RestaurantCard = (props) => {
     <div className="transition-transform transform hover:scale-95">
       <div className="relative overflow-hidden rounded-lg">
         <img
-          className="rounded-2xl object-cover w-full h-[200px]"
+          className="rounded-2xl object-cover w-full h-[150px]"
           src={IMG_URL + cloudinaryImageId}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to transparent "></div>

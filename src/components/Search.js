@@ -69,7 +69,7 @@ const SearchRestaurants = () => {
 
   const getSearchByRes = async () => {
     const data = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9715987&lng=77.5945627&str=${searchName}&trackingId=null&submitAction=SUGGESTION&queryUniqueId=3cce203d-9925-f374-7884-542a95a43940`
+      `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9715987&lng=77.5945627&str=${searchName}&trackingId=undefined&submitAction=SUGGESTION&queryUniqueId=a32921f5-4148-e7cc-a029-a4ca7172d616`
     );
     const json = await data.json();
     // let item = json?.data?.cards[1]?.groupedCard?.cardGroupMap
@@ -251,21 +251,27 @@ const SearchRestaurants = () => {
               ) : (
                 <div>
                   <div className="grid grid-cols-1 md:grid-cols-2 pt-4">
+                    {console.log(searchByRes.cards)}
                     {searchByRes.cards &&
                       searchByRes.cards
                         .slice(1) // Exclude the first item
                         .filter((card, index, self) => {
                           // Filter out duplicates based on restaurant IDs
                           const id = card?.card?.card?.restaurant?.info?.id;
+                          console.log(card,index,self);
+                        
                           return (
                             id &&
                             index ===
                               self.findIndex(
                                 (c) =>
+                                // console.log(c?.card?.card?.restaurant?.info?.id)
                                   c?.card?.card?.restaurant?.info?.id === id
+                                  
                               )
                           );
-                        })
+                          
+                        })                       
                         .map((res) => (
                           <div
                             className="pr-2 pb-2"

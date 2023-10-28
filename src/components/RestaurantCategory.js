@@ -10,6 +10,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
  /* it will be solved once i make the parent component(RestaurantMenu) control its state , not the children(RestaurantCategory) */
  
   const handleClick = () => {
+    // setshowItems(!showItems);this is a toggle feature of accordian 
     setShowIndex();
   }
   return (

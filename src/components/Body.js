@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { list } from "postcss";
 import UserContext from "../utils/userContext";
+import ButtonList from "./ButtonList";
 
 const Body = () => {
   const [listofRestaurant, setListofRestaurant] = useState([]);
@@ -15,7 +16,6 @@ const Body = () => {
 
   const RestaurantCardBestseller = withBestsellerLabel(RestaurantCard);
 
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -23,7 +23,6 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST_API);
     const json = await data.json();
-
 
     setListofRestaurant(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -49,7 +48,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div>
-      <div className="flex justify-between items-center">
+      {/* <div className="flex justify-between items-center">
         <div className="m-4 p-4">
           <input
             type="text"
@@ -98,18 +97,46 @@ const Body = () => {
         <div className="m-4 p-4">
           Online Status: {onlineStatus ? "✅" : "🔴"}
         </div>
+      </div> */}
+
+      <div className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 ">
+        <h1 className="font-bold text-2xl p-6">
+          Restaurants with online food delivery
+        </h1>
+        <div>
+          <ButtonList />
+        </div>
+        <div
+          className="grid grid-cols-1 mx-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start gap-8 mt-8"
+          data-testid="res-list"
+        >
+          {/* You have to write logic for NO restraunt fount here */}
+          {filteredRestaurant &&
+            filteredRestaurant.map((restaurants) => {
+              return (
+                <Link
+                  key={restaurants.info.id}
+                  to={"/restaurants/" + restaurants.info.id}
+                >
+                  {restaurants.info.avgRating > 4.2 ? (
+                    <RestaurantCardBestseller restData={restaurants} />
+                  ) : (
+                    <RestaurantCard restData={restaurants} />
+                  )}
+                </Link>
+              );
+            })}
+        </div>
       </div>
-      <div className="flex flex-wrap mx-20">
-        {filteredRestaurant.map((restros) => (
-          <Link key={restros.info.id} to={"/restaurants/" + restros.info.id}>
-            {restros.info.avgRating > 4.2 ? (
-              <RestaurantCardBestseller restData={restros} />
+      {/* {filteredRestaurant.map((restaurants) => (
+          <Link key={restaurants.info.id} to={"/restaurants/" + restaurants.info.id}>
+            {restaurants.info.avgRating > 4.2 ? (
+              <RestaurantCardBestseller restData={restaurants} />
             ) : (
-              <RestaurantCard restData={restros} />
+              <RestaurantCard restData={restaurants} />
             )}
           </Link>
-        ))}
-      </div>
+        ))} */}
     </div>
   );
 };
