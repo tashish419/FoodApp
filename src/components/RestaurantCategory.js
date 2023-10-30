@@ -1,17 +1,20 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
+import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 
 const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
 //   console.log(data);
 //   const [showItems, setShowIems] = useState(false) 
-/*in this case RestaurantCategory component managing its own state therefore whenever 
- i click on accordian header,it expands and when i click on another accordian header ,that accordian body
+/*in this case RestaurantCategory component managing its own state thus now Restaurantcategory
+  component has  the power of show and expand the accordian. so,  whenever i click on 
+ accordian header,it expands and when i click on another accordian header ,that accordian body
  expands but previously expanded accordian body does not collapse  */
- /* it will be solved once i make the parent component(RestaurantMenu) control its state , not the children(RestaurantCategory) */
+ /* it will be solved once i make the parent component(RestaurantMenu) control its state ,
+   not the children(RestaurantCategory) -> this is known as lifting the state up */
  
   const handleClick = () => {
     // setshowItems(!showItems);this is a toggle feature of accordian 
-    setShowIndex();
+    (showItems ? setShowIndex(false) : setShowIndex(true))
   }
   return (
     <div>
@@ -21,7 +24,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
           <span className="font-bold text-lg text-gray-900">
             {data.title} ({data.itemCards.length})
           </span>
-          <span>🔽</span>
+          <span>{showItems ? <SlArrowUp /> : <SlArrowDown />}</span>
         </div>
         {/*Accordian Body */}
         <div>

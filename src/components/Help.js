@@ -25,7 +25,7 @@ const Help = () => {
 
   return (
     <div className="bg-slate-50 w-[80vw] flex-grow font-poppins mx-auto">
-      <h1 className="py-5 font-bold text-center text-2xl bg-slate-900 text-white ">
+      <h1 className="py-5 font-bold text-center text-2xl bg-gray-400 text-black ">
         FAQs
       </h1>
       {FAQ.map((question) => {
@@ -35,7 +35,7 @@ const Help = () => {
             id={question.id}
             title={question.title}
             description={question.description}
-            isVisible={visibleSection === question.id}
+            isVisible={visibleSection === question.id ? true : false}
             setIsVisible={(param) => {
               if (param) {
                 setVisibleSection(question.id);

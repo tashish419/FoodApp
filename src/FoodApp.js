@@ -82,7 +82,7 @@ const appRouter = createBrowserRouter([
         element: <Offers />,
       },
       {
-        path: "/helps",
+        path: "/help",
         element: <Help />
       },
       {

@@ -5,6 +5,7 @@ import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import SearchSuggestionsCard from "./SearchSuggestionsCard";
 import SearchResultResCard from "./SearchResultResCard";
 import SearchResults from "./SearchResult";
+import ButtonList from "./ButtonList";
 
 const SearchRestaurants = () => {
   const [searchText, setSearchText] = useState("");
@@ -222,7 +223,9 @@ const SearchRestaurants = () => {
                 Dishes
               </h1>
             </div>
-
+            <div>
+              <ButtonList />
+            </div>
             <div className="bg-gray-100 py-4 px-2 md:px-4 z-2">
               {isDish === "RESTAURANT" && searchByRes !== undefined ? (
                 <div>
@@ -251,27 +254,24 @@ const SearchRestaurants = () => {
               ) : (
                 <div>
                   <div className="grid grid-cols-1 md:grid-cols-2 pt-4">
-                    {console.log(searchByRes.cards)}
+                    {/* {console.log(searchByRes.cards)} */}
                     {searchByRes.cards &&
                       searchByRes.cards
                         .slice(1) // Exclude the first item
                         .filter((card, index, self) => {
                           // Filter out duplicates based on restaurant IDs
                           const id = card?.card?.card?.restaurant?.info?.id;
-                          console.log(card,index,self);
-                        
+                          // console.log(card,index,self);
                           return (
                             id &&
                             index ===
                               self.findIndex(
                                 (c) =>
-                                // console.log(c?.card?.card?.restaurant?.info?.id)
+                                  // console.log(c?.card?.card?.restaurant?.info?.id)
                                   c?.card?.card?.restaurant?.info?.id === id
-                                  
                               )
                           );
-                          
-                        })                       
+                        })
                         .map((res) => (
                           <div
                             className="pr-2 pb-2"

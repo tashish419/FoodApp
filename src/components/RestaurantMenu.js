@@ -50,7 +50,12 @@ const RestaurantMenu = () => {
           key={category.card.card.title}
           data={category?.card?.card}
           showItems={index === showIndex ? true : false}
-          setShowIndex={() => setShowIndex(index)}//now i have passed a function as a prop which will update the setShowIndex variable acc to index
+          setShowIndex={(param) => {
+            if(param){
+              setShowIndex(index);
+            } else{
+              setShowIndex(null);
+            }}}//now i have passed a function as a prop which will update the setShowIndex variable acc to index
         />
       ))}
     </div>
