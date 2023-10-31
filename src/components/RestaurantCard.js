@@ -9,12 +9,12 @@ const RestaurantCard = (props) => {
     cuisines,
     avgRating,
     sla,
-    aggregatedDiscountInfoV2,
+    aggregatedDiscountInfoV3,
     areaName,
   } = restData?.info;
 
-  const discountHeader = aggregatedDiscountInfoV2?.header;
-  const discountSubHeader = aggregatedDiscountInfoV2?.subHeader;
+  const discountHeader = aggregatedDiscountInfoV3?.header;
+  const discountSubHeader = aggregatedDiscountInfoV3?.subHeader;
   const shouldRenderDiscount = discountHeader && discountSubHeader;
 
   return (

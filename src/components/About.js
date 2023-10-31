@@ -3,8 +3,8 @@
 const About = () => {
   return (
     <div>
-      <div className=" bg-blue-950 p-8">
-        <h1 className=" text-4xl text-white text-center p-4">ProFood</h1>
+      <div className=" bg-gray-400 p-4">
+        <h1 className=" text-4xl text-black font-bold text-center p-4">ProFood</h1>
       </div>
       <div className="w-9/12 mx-auto my-4 bg-gray-50 shadow-lg p-4">
         <p className="">

@@ -24,7 +24,7 @@ const Footer = () => {
           />
         </div>
       </div>
-      <footer className="mt-6 md:mt-0 bg-[#02060C] text-white py-12 px-8 md:px-56">
+      <footer className="mt-6 md:mt-0 bg-slate-800 text-white py-12 px-8 md:px-56">
         <div className="container grid grid-cols-1 text-center  md:grid-cols-4 gap-4 mx-auto">
           <div className="md:col-start-1 col-end-auto row-start-1 row-end-5">
             <h2 className="text-2xl font-bold">ProFood</h2>

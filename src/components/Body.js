@@ -7,10 +7,14 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { list } from "postcss";
 import UserContext from "../utils/userContext";
 import ButtonList from "./ButtonList";
+import FoodCarousel from "./FoodCarousel";
+import ItemCarousel from "./ItemCarousel";
 
 const Body = () => {
   const [listofRestaurant, setListofRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [carousel, setCarousel] = useState("");
+  const [itemCarousel, setItemCarousel] = useState("");
 
   const [searchText, setSearchText] = useState([]);
 
@@ -23,6 +27,10 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST_API);
     const json = await data.json();
+    console.log(json);
+
+    setCarousel(json?.data?.cards[0]?.card?.card?.imageGridCards);
+    setItemCarousel(json?.data?.cards[1]?.card?.card?.imageGridCards);
 
     setListofRestaurant(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -41,8 +49,8 @@ const Body = () => {
       </h1>
     );
 
-  const { loggedInUser, setUserName } = useContext(UserContext);
-  console.log(setUserName);
+  // const { loggedInUser, setUserName } = useContext(UserContext);
+  // console.log(setUserName);
 
   return listofRestaurant.length === 0 ? (
     <Shimmer />
@@ -98,9 +106,16 @@ const Body = () => {
           Online Status: {onlineStatus ? "✅" : "🔴"}
         </div>
       </div> */}
+      <div className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 pb-4">
+        {carousel && <FoodCarousel data={carousel} />}
+      </div>
+
+      <div className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 pb-4">
+        {itemCarousel && <ItemCarousel data={itemCarousel} />}
+      </div>
 
       <div className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 ">
-        <h1 className="font-bold text-2xl p-6">
+        <h1 className="font-bold text-2xl py-6 ">
           Restaurants with online food delivery
         </h1>
         <div>

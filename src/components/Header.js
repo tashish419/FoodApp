@@ -11,7 +11,7 @@ const Header = () => {
   // console.log(cartItems);
 
   return (
-    <div className="flex justify-between bg-blue-300 shadow-lg h-25 w-full top-0 sticky z-[1001]">
+    <div className="flex justify-between bg-slate-800 shadow-lg h-25 w-full top-0 sticky z-[1001]">
       <div>
         <Link to="/">
           <img className="w-[100px] h-[104px]" src={LOGO_URL} />
@@ -19,13 +19,13 @@ const Header = () => {
       </div>
       <div className="flex items-center">
         <ul className="flex ">
-          <li className="sm:mr-7 group hover:text-white mr-14">
+          <li className="sm:mr-7 group text-white mr-14">
             <Link
               to="/search"
               className="flex items-center justify-center gap-2 font-medium text-base"
             >
               <svg
-                className="fill-[#01030a] group-hover:fill-white stroke-current stroke-0"
+                className="fill-white group-hover:fill-white stroke-current stroke-0"
                 viewBox="5 -1 12 25"
                 height="17"
                 width="17"
@@ -36,13 +36,13 @@ const Header = () => {
               Search
             </Link>
           </li>
-          <li className="sm:mr-7 group hover:text-white mr-14">
+          <li className="sm:mr-7 group text-white mr-14">
             <Link
               to="/offers"
               className="flex items-center justify-center gap-2 font-medium text-base"
             >
               <svg
-                className="fill-[#01030a] group-hover:fill-white stroke-current stroke-0"
+                className="fill-white group-hover:fill-white stroke-current stroke-0"
                 viewBox="0 0 32 32"
                 height="19"
                 width="19"
@@ -53,13 +53,13 @@ const Header = () => {
               Offers
             </Link>
           </li>
-          <li className="sm:mr-7 group hover:text-white mr-14">
+          <li className="sm:mr-7 group text-white mr-14">
             <Link
               to="/help"
               className="flex items-center justify-center gap-2 font-medium text-base"
             >
               <svg
-                className="fill-[#01030a] stroke-current stroke-0 group-hover:fill-white"
+                className="fill-white stroke-current stroke-0 group-hover:fill-white"
                 viewBox="6 -1 12 25"
                 height="19"
                 width="19"
@@ -70,11 +70,11 @@ const Header = () => {
               Help
             </Link>
           </li>
-          <li className="sm:mr-7  group hover:text-white">
+          <li className="sm:mr-7  group text-white">
             <div className="flex gap-1 relative items-center pl-7 font-medium text-base">
               <span className="absolute top-1/2 left-0 -translate-y-1/2">
                 <svg
-                  className="fill-[#01030a] stroke-current stroke-0 relative group-hover:fill-white"
+                  className="fill-white stroke-current stroke-0 relative group-hover:fill-white"
                   viewBox="6 0 12 24"
                   height="19"
                   width="18"
@@ -102,7 +102,7 @@ const Header = () => {
             <Link to="/cart">
               <span className="absolute top-1/2 left-0 -translate-y-1/2">
                 <svg
-                  className="fill-white stroke-[#282c3f] relative stroke-2"
+                  className="fill-white  relative stroke-2"
                   viewBox="-1 0 37 32"
                   height="20"
                   width="20"
@@ -114,7 +114,7 @@ const Header = () => {
                   {cartItems.length}
                 </span>
               </span>
-              <span className="hover:text-white">Cart</span>
+              <span className="text-white">Cart</span>
             </Link>
           </li>
         </ul>
