@@ -9,6 +9,7 @@ import UserContext from "../utils/userContext";
 import ButtonList from "./ButtonList";
 import FoodCarousel from "./FoodCarousel";
 import ItemCarousel from "./ItemCarousel";
+import ShimmerCursor from "./ShimmerCursor";
 
 const Body = () => {
   const [listofRestaurant, setListofRestaurant] = useState([]);
@@ -51,9 +52,20 @@ const Body = () => {
 
   // const { loggedInUser, setUserName } = useContext(UserContext);
   // console.log(setUserName);
+  if(!listofRestaurant){
+    return(
+      <div>
+        <ShimmerCursor />
+        <Shimmer />
+      </div>
+    )
+  }
 
   return listofRestaurant.length === 0 ? (
-    <Shimmer />
+    <div>
+      <ShimmerCursor />
+      <Shimmer />
+    </div>
   ) : (
     <div>
       {/* <div className="flex justify-between items-center">
@@ -113,6 +125,8 @@ const Body = () => {
       <div className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 pb-4">
         {itemCarousel && <ItemCarousel data={itemCarousel} />}
       </div>
+
+      <hr className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 border-1 border-solid border-gray-300 my-8" />
 
       <div className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 ">
         <h1 className="font-bold text-2xl py-6 ">
