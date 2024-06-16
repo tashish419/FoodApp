@@ -18,16 +18,17 @@ const RestaurantMenu = () => {
   }
 
   const { name, cuisines, costForTwoMessage, locality, city } =
-    restInfo?.cards[0]?.card?.card?.info;
-
-  const { itemCards } =
-    restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-      ?.card;
+    restInfo?.cards[2]?.card?.card?.info;
+  
+  // we do not need itemcards as while mapping on categories,below we are passing data={category?.card?.card} as props to <RestaurantCategory/> 
+  // const { itemCards } =
+  //   restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+  //     // ?.card;
 
   // console.log(restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
   const categories =
-    restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"

@@ -35,6 +35,7 @@
   "dependencies": {
     "@babel/preset-react": "^7.22.15",
     "@reduxjs/toolkit": "^1.9.7",
+    "caniuse-lite": "^1.0.30001634",
     "cors": "^2.8.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -7,15 +7,15 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { list } from "postcss";
 import UserContext from "../utils/userContext";
 import ButtonList from "./ButtonList";
-import FoodCarousel from "./FoodCarousel";
+// import FoodCarousel from "./FoodCarousel";
 import ItemCarousel from "./ItemCarousel";
 import ShimmerCursor from "./ShimmerCursor";
 
 const Body = () => {
   const [listofRestaurant, setListofRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  const [carousel, setCarousel] = useState("");
   const [itemCarousel, setItemCarousel] = useState("");
+  // const [carousel, setCarousel] = useState("");
 
   const [searchText, setSearchText] = useState([]);
 
@@ -28,16 +28,16 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST_API);
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
 
-    setCarousel(json?.data?.cards[0]?.card?.card?.imageGridCards);
-    setItemCarousel(json?.data?.cards[1]?.card?.card?.imageGridCards);
+    setItemCarousel(json?.data?.cards[0]?.card?.card?.imageGridCards);
+    // setCarousel(json?.data?.cards[1]?.card?.card?.imageGridCards);
 
     setListofRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -52,13 +52,13 @@ const Body = () => {
 
   // const { loggedInUser, setUserName } = useContext(UserContext);
   // console.log(setUserName);
-  if(!listofRestaurant){
-    return(
+  if (!listofRestaurant) {
+    return (
       <div>
         <ShimmerCursor />
         <Shimmer />
       </div>
-    )
+    );
   }
 
   return listofRestaurant.length === 0 ? (
@@ -119,12 +119,12 @@ const Body = () => {
         </div>
       </div> */}
       <div className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 pb-4">
-        {carousel && <FoodCarousel data={carousel} />}
-      </div>
-
-      <div className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 pb-4">
         {itemCarousel && <ItemCarousel data={itemCarousel} />}
       </div>
+
+      {/* <div className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 pb-4">
+        {carousel && <FoodCarousel data={carousel} />}
+      </div> */}
 
       <hr className="mx-8 sm:mx-14 md:mx-24 lg:mx-44 border-1 border-solid border-gray-300 my-8" />
 

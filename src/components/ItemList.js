@@ -12,9 +12,9 @@ const ItemList = ({ items }) => {
     //dispatch an action
     dispatch(addItem(item))
     /*as soon as i hit the add button ->it will dispatch an action -> will call the reducer and
-    whatever i write iniside addItem("pizza")->iy will be taken as an second argument inside 
+    whatever i write iniside addItem("pizza")->it will be taken as a second argument inside 
     the reducer function of cartSlice-> this second arguemnt is action.payload in cartSlice ->
-    then payload will be pushed inside the Items list whixh was empty initially -> */
+    then payload will be pushed inside the Items list which was empty initially -> */
   }
 
   return (

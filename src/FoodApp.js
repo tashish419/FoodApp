@@ -15,6 +15,7 @@ import Cart from "./components/Cart";
 import SearchRestaurants from "./components/Search";
 import Offers from "./components/Offers";
 import Help from "./components/Help";
+import { SignIn } from "./components/SignIn";
 // import Grocery from "./components/Grocery";
 
 //chunking, code splitting , Dynamic Bundling, lazy loading, on demand loading, dynamic import(different names)
@@ -65,7 +66,7 @@ const AppLayout = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+
 
 const appRouter = createBrowserRouter([
   {
@@ -98,6 +99,10 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/signin",
+        element: <SignIn />
+      },
+      {
         path: "/cart",
         element: <Cart />,
       },
@@ -117,4 +122,7 @@ const appRouter = createBrowserRouter([
   },
 ]);
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(<RouterProvider router={appRouter} />);
+

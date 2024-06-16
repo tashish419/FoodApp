@@ -35,7 +35,7 @@ const FoodCarousel = ({ data }) => {
           <div key={cardData.id} className="px-2 cursor-pointer">
             <img
               src={IMG_URL + cardData.imageId}
-              className=" object-cover rounded-3xl"
+              className="object-cover rounded-3xl"
               alt={`Image ${cardData.id}`}
             />
           </div>
