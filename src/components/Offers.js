@@ -16,7 +16,7 @@ const Offers = () => {
     const data = await fetch(RESTAURANT_LIST_API);
     const json = await data.json();
 
-    console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+    // console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
     setFilteredRestaurant(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );

@@ -4,7 +4,7 @@ import React from "react";
 //shortcut key -rafce(to create boiler plate component)
 const Error = () => {
   const err = useRouteError();
-  console.log(err);
+  // console.log(err);
   return (
     <div>
       <h1>Ooops!!!</h1>

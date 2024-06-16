@@ -5,7 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 
 
 const FoodCarousel = ({ data }) => {
-  console.log(data.info);
+  // console.log(data.info);
   //breakpoints for carousel
   const responsive = {
     superLargeDesktop: {
