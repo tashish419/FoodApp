@@ -30,7 +30,7 @@ const SearchRestaurants = () => {
 
   const getSearchItemFoods = async () => {
     const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=12.9715987&lng=77.5945627"
+      "https://proxy.cors.sh/https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=12.9715987&lng=77.5945627"
     );
     const json = await data.json();
     // console.log(json?.data?.cards[1]?.card?.card?.imageGridCards?.info);
@@ -53,7 +53,7 @@ const SearchRestaurants = () => {
 
   const getSearchSuggestions = async () => {
     const data = await fetch(
-      `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/search/suggest?lat=12.9715987&lng=77.5945627&str=${searchText}&trackingId=undefined`
+      `https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/search/suggest?lat=12.9715987&lng=77.5945627&str=${searchText}&trackingId=undefined`
     );
 
     const json = await data.json();
@@ -70,7 +70,7 @@ const SearchRestaurants = () => {
 
   const getSearchByRes = async () => {
     const data = await fetch(
-      `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9715987&lng=77.5945627&str=${searchName}&trackingId=undefined&submitAction=SUGGESTION&queryUniqueId=a32921f5-4148-e7cc-a029-a4ca7172d616`
+      `https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9715987&lng=77.5945627&str=${searchName}&trackingId=undefined&submitAction=SUGGESTION&queryUniqueId=a32921f5-4148-e7cc-a029-a4ca7172d616`
     );
     const json = await data.json();
     // let item = json?.data?.cards[1]?.groupedCard?.cardGroupMap
